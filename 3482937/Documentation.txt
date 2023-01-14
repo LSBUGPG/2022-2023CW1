@@ -1,0 +1,25 @@
+Using The Ability System
+First is to Create a custom input object,
+This is created in the project, "Right Click-> Create -> keyBindings
+This will create a keybinding asset, name it what ever you like
+In the keyBindings Asset, add as many elements to the KeyBindingCheck as you want, this will be equals to the amount of abilities you have
+Assign a key bindidng action and a Keycode
+Make sure these are unique to avoid clashes when playing the game
+Now in your player game object add a "Player Abilities" component
+This component will handle all of the abilities and the input assignment
+Firstly drag your created keyBindings asset in to the "Ability Input" field of the "Player Abilities" component
+The ability holder can be any game object on your player game object this is just so that the ability prefabs can be instantiated onto your player
+And now the abilities, i have made some basic abilities but only one has actual functionality
+
+To make an ability create an empty game object in your scene
+Then create a C# script and extend the "Abilities" class instead of monobehaviour 
+Implement the virtual methods from the "Abilities" class into your new script, these are the "OnActivateAbility" , "OnDisableAbility" and "OnTick"
+The activate ability activate like a start method, when the player presses the button this method is run once, the disable ability is similar but for when the cooldown time is run out, and the tick is like the update function which runs every frame the method is called
+So with this in mind put what ever behaviour you would like in these methods
+The tick method only runs as long as the ability is still in AbilityState.Active state
+After this you can go back to the editor and add the new component to the previously created game object
+Now you should be able to change the default data
+Change the "Action" field to align with one of the ones that you created from your keyBindings asset
+Set the cooldown duration which is how long the player has to wait to re use the ability
+And the active time which is how long the ability will be in effect
+You can also add effects and audio to the ability "Trigger Effect" and "Disable Effect" for extra game juice
